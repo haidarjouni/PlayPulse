@@ -28,7 +28,7 @@ class RegisterForum extends Component
     {
         // Run validation
         $this->validate();
-
+        $this->name = str_replace(' ', '-', trim($this->name));
         // Handle the profile image upload
         if ($this->profile_img) {
             // Store the uploaded profile image in the 'photos' folder under 'public' disk
