@@ -21,4 +21,15 @@ class Game extends Model
     {
         return $this->belongsToMany(VoiceActor::class, 'game_voice_actor_character', 'game_id', 'voice_actor_id');
     }
+
+    public function voiceActorForCharacter($gameId, $characterId)
+    {
+        return $this->voiceActors()
+            ->wherePivot('game_id', $gameId)  // Filter by game_id
+            ->wherePivot('character_id', $characterId)  // Filter by character_id
+            ->first();
+    }
+    public function getGender(){
+        return $this->gender ? 'male' : 'female';
+    }
 }

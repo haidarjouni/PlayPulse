@@ -31,7 +31,7 @@
         /*    font-family: 'ABeeZee', sans-serif;*/
         </style>
     </head>
-    <body class="font-sans antialiased min-h-screen body">
+    <body class="font-sans antialiased min-h-screen body min-h-screen">
         <main>
             {{ $slot }}
         </main>

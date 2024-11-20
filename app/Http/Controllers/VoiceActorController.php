@@ -2,18 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Character;
+use App\Models\VoiceActor;
 use Illuminate\Http\Request;
 
-class CharacterController extends Controller
+class VoiceActorController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $characters = Character::all();
-        return view('character.index', compact('characters'));
+        //
     }
 
     /**
@@ -37,8 +36,8 @@ class CharacterController extends Controller
      */
     public function show(string $id)
     {
-        $character = Character::find($id);
-        return view('character.show', compact('character'));
+        $voice_actor = VoiceActor::find($id);
+        return view('voice-actor.show', compact('voice_actor'));
     }
 
     /**

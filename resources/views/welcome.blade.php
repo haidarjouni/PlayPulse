@@ -35,6 +35,7 @@
                 <div class="hidden lg:flex lg:gap-x-12">
                     <a href="#" class="text-sm/6 font-semibold text-gray-900">Home</a>
                     <a href="{{route('game.index')}}" class="text-sm/6 font-semibold text-gray-900">Game List</a>
+                    <a href="{{route('character.index')}}" class="text-sm/6 font-semibold text-gray-900">Character List</a>
                     @auth
                         <a href="{{route("profile", ['name' => Auth::user()->name] )}}" class="text-sm/6 font-semibold text-gray-900">Profile</a>
                         @if(Auth::user()->isAdmin())

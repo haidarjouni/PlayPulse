@@ -2,6 +2,7 @@
 use App\Http\Controllers\CharacterController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\GameController;
+use App\Http\Controllers\VoiceActorController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -10,7 +11,7 @@ require __DIR__.'/auth.php';
 Route::view('/', 'welcome')->name('home');
 Route::view('/login-page', 'User.login')->name('login-page');
 Route::view('/register-page', 'User.register')->name('register-page');
-Route::get('/profile/{name}', [ProfileController::class, 'show'])->name('profile');
+Route::get('/profile/{name}/gamelist', [ProfileController::class, 'show'])->name('profile');
 
 Route::prefix('game')->group(function () {
     Route::middleware(\App\Http\Middleware\AdminMiddleware::class)->group(function () {
@@ -31,9 +32,16 @@ Route::prefix('character')->group(function () {
         Route::view('register', 'character.register')->name('character.register');
     });
 });
+Route::prefix('voice-actor')->group(function () {
+    Route::controller(VoiceActorController::class)->group(function () {
+        Route::get('show/{id}', 'show')->name('voice-actor.show');
+    });
+    Route::middleware(\App\Http\Middleware\AdminMiddleware::class)->group(function () {
+        Route::view('register', 'voice-actor.register')->name('voice-actor.register');
+    });
 
+});
 Route::middleware(\App\Http\Middleware\AdminMiddleware::class)->group(function () {
-    Route::view('voice-actor/register', 'voice_actor.register')->name('voice-actor.register');
     Route::view('relation/register', 'relation-register')->name('relation.register');
 });
 

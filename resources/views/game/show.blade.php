@@ -15,7 +15,7 @@
     <div class="w-full background h-[400px]">
     </div>
 
-    <header class="w-full  bg-white ">
+    <header class="w-full bg-white" style="font-family: 'ABeeZee', sans-serif;">
         <div class="flex flex-row justify-center gap-7 max-w-[1300px] h-fit mx-auto px-10">
                 <div class="w-[240px] relative">
                     <div class="absolute bottom-7">
@@ -120,27 +120,32 @@
                         <div class="bg-white min-w-[337px] rounded-lg overflow-hidden h-[80px] flex">
                             <!-- Character Info -->
                             <div class="flex flex-1">
-                                <div>
+                                <a href="{{ route('character.show',$character->id) }}">
                                     <img class="w-[60px] h-[80px] object-cover" src="{{ Storage::url($character->profile_image) }}" alt="{{ $character->name }}">
-                                </div>
-                                <div class="w-[90px]">
-                                    <div class="p-[10px] flex flex-col place-content-between text-sm text-[#5d738b] hover:text-blue-500 hover:cursor-pointer">
-                                        <p class="h-[48px]">{{ $character->name }}</p>
-                                        <p>{{ $character->pivot->role }}</p>
+                                </a>
+                                <a href="{{ route('character.show',$character->id) }}">
+                                    <div class="w-[90px]">
+                                        <div class="p-[10px] flex flex-col place-content-between text-sm text-[#5d738b] hover:text-blue-500 hover:cursor-pointer">
+                                            <p class="h-[48px]">{{ $character->name }}</p>
+                                            <p>{{ $character->pivot->role }}</p>
+                                        </div>
                                     </div>
-                                </div>
+                                </a>
                             </div>
                             <!-- Voice Actor Info -->
                             <div class="flex flex-row-reverse flex-1">
-                                <div>
+
+                                <a href="{{ route('voice-actor.show',$character->voiceActors->first()->id) }}">
                                     <img class="w-[60px] h-[80px] object-fill" src="{{ Storage::url($character->voiceActors->first()->profile_image) }}" alt="{{ $character->voiceActors->first()->name }}">
-                                </div>
-                                <div class="w-[90px]">
-                                    <div class="p-[10px] flex flex-col place-content-between text-sm text-[#5d738b] hover:text-blue-500 hover:cursor-pointer">
-                                        <p class="h-[48px] text-wrap">{{ $character->voiceActors->first()->name }}</p>
-                                        <p> Voice Actor</p>
+                                </a>
+                                <a href="{{ route('voice-actor.show',$character->voiceActors->first()->id) }}">
+                                    <div class="w-[90px]">
+                                        <div class="p-[10px] flex flex-col place-content-between text-sm text-[#5d738b] hover:text-blue-500 hover:cursor-pointer">
+                                            <p class="h-[48px] text-wrap">{{ $character->voiceActors->first()->name }}</p>
+                                            <p> Voice Actor</p>
+                                        </div>
                                     </div>
-                                </div>
+                                </a>
                             </div>
                         </div>
                     @endforeach

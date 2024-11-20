@@ -16,4 +16,7 @@ class Character extends Model
     public function voiceActors(){
         return $this->belongsToMany(VoiceActor::class, 'game_voice_actor_character', 'character_id', 'voice_actor_id');
     }
+    public function getGender(){
+        return $this->gender ? 'male' : 'female';
+    }
 }
