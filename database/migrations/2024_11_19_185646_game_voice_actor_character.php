@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('game_voice_actor_character', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('game_id')->constrained('games')->onDelete('cascade');
+            $table->foreignId('game_id')->constrained('game')->onDelete('cascade');
             $table->foreignId('voice_actor_id')->constrained('voice_actors')->onDelete('cascade');
-            $table->foreignId('character_id')->constrained('characters')->onDelete('cascade');
+            $table->foreignId('character_id')->constrained('character')->onDelete('cascade');
             $table->string('role');
             $table->timestamps();
         });

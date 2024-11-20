@@ -40,10 +40,10 @@
 
         <main>
             <div class="mx-auto max-w-7xl flex flex-wrap gap-10 px-4 py-6 sm:px-6 lg:px-8">
-                <!-- Display the games -->
+                <!-- Display the game -->
                 @foreach($games as $game)
                     <div href="" class=" w-fit">
-                        <a href="{{ route('games.show',['id'=> $game->id]) }}">
+                        <a href="{{ route('game.show',['id'=> $game->id]) }}">
                             <img src="{{ Storage::url($game->profile_image) }}" alt="{{ $game->name }} Image" class="shadow-2xl w-[200px] h-[260px] aspect-[9/10] object-fill rounded-lg">
                         </a>
                         <p class="font-bold ">{{ $game->name }}</p>

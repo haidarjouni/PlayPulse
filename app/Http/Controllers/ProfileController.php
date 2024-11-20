@@ -13,6 +13,6 @@ class ProfileController extends Controller
 
     public function show($name){
         $user = \App\Models\User::where('name', $name)->first();
-        return view('profile.profile-show', compact('user'));
+        return view('profile.show', compact('user'));
     }
 }

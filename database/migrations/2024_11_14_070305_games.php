@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('games', function (Blueprint $table) {
+        Schema::create('game', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->string('profile_image')->nullable();  // Add this line for the profile image
@@ -30,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('games');
+        Schema::dropIfExists('game');
     }
 };

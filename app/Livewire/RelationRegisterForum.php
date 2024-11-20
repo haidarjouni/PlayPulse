@@ -48,8 +48,8 @@ class RelationRegisterForum extends Component
     public function render()
     {
         return view('livewire.relation-register-forum', [
-            'games' => $this->games,
-            'characters' => $this->characters,
+            'game' => $this->games,
+            'character' => $this->characters,
             'voice_actors' => $this->voice_actors,
         ]);
     }

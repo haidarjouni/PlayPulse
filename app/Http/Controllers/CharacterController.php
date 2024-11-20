@@ -2,18 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Game;
+use App\Models\Character;
 use Illuminate\Http\Request;
 
-class GameController extends Controller
+class CharacterController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $games = Game::all(); // Fetch all game
-        return view('game.index', ['games' => $games]); // Pass $games to the view
+        $characters = Character::all();
+        return view('character.index', compact('characters'));
     }
 
     /**
@@ -35,13 +35,9 @@ class GameController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(int $id)
+    public function show(string $id)
     {
-        $game = Game::find($id); // Fetch specific game
-        if (!$game) {
-            abort(404); // If the game is not found, show a 404 page
-        }
-        return view('game.show', ['game' => $game]); // Pass $game to a separate view
+        //
     }
 
     /**

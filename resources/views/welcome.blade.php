@@ -34,19 +34,17 @@
                 </div>
                 <div class="hidden lg:flex lg:gap-x-12">
                     <a href="#" class="text-sm/6 font-semibold text-gray-900">Home</a>
-                    <a href="{{route('games.index')}}" class="text-sm/6 font-semibold text-gray-900">Game List</a>
+                    <a href="{{route('game.index')}}" class="text-sm/6 font-semibold text-gray-900">Game List</a>
                     @auth
                         <a href="{{route("profile", ['name' => Auth::user()->name] )}}" class="text-sm/6 font-semibold text-gray-900">Profile</a>
-
-
                         @if(Auth::user()->isAdmin())
-                            <a href="{{ route('game-register') }}" class="text-sm/6 font-semibold text-gray-900">Enter Games</a>
+                            <a href="{{ route('game.register') }}" class="text-sm/6 font-semibold text-gray-900">Enter Games</a>
 
-                            <a href="{{ route('character-register') }}" class="text-sm/6 font-semibold text-gray-900">Enter Character</a>
+                            <a href="{{ route('character.register') }}" class="text-sm/6 font-semibold text-gray-900">Enter Character</a>
 
-                            <a href="{{ route('register-voice-actor') }}" class="text-sm/6 font-semibold text-gray-900">Enter Voice Actor</a>
+                            <a href="{{ route('voice-actor.register') }}" class="text-sm/6 font-semibold text-gray-900">Enter Voice Actor</a>
 
-                            <a href="{{ route('relation-register') }}" class="text-sm/6 font-semibold text-gray-900">Dunno wat to call this</a>
+                            <a href="{{ route('relation.register') }}" class="text-sm/6 font-semibold text-gray-900">Dunno wat to call this</a>
                         @endif
 
                     @endauth
