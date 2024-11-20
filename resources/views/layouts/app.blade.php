@@ -6,6 +6,8 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
         <title>{{$title}}</title>
+        <!-- font awsome-->
+        <script src="https://kit.fontawesome.com/e66d544c68.js" crossorigin="anonymous"></script>
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
@@ -16,14 +18,23 @@
         <!-- flowbite-->
         <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.css"  rel="stylesheet" />
         <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"></script>
+        <!-- pikaday-->
+        <script src="https://cdn.jsdelivr.net/npm/pikaday/pikaday.js"></script>
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/pikaday/css/pikaday.css">
+
+
         @vite(['resources/css/app.css', 'resources/js/app.js'])
+        @stack('styles')
         <style>
-            @import url(https://fonts.bunny.net/css?family=abeezee:400);
+            @import url(https://fonts.bunny.net/css?family=abeezee:400|aldrich:400);
+        /*    font-family: 'Aldrich', sans-serif;*/
+        /*    font-family: 'ABeeZee', sans-serif;*/
         </style>
     </head>
-    <body class="font-sans antialiased bg-gray-200">
+    <body class="font-sans antialiased min-h-screen body">
         <main>
             {{ $slot }}
         </main>
+        @stack('scripts')
     </body>
 </html>
