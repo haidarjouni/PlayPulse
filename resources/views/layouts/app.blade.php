@@ -29,6 +29,8 @@
             @import url(https://fonts.bunny.net/css?family=abeezee:400|aldrich:400);
         /*    font-family: 'Aldrich', sans-serif;*/
         /*    font-family: 'ABeeZee', sans-serif;*/
+            [x-cloak] { display: none !important; }
+
         </style>
     </head>
     <body class="font-sans antialiased min-h-screen body min-h-screen">

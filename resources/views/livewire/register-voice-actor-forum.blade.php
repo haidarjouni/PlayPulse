@@ -1,5 +1,6 @@
 <div>
     <form class="w-[900px] mx-auto border-2 border-black my-6 shadow-xl bg-white p-10 rounded-xl text-white" style="font-family: 'ABeeZee', sans-serif;" wire:submit="save">
+        @csrf
         <div class="space-y-12">
             <div class="border-b border-gray-900/10 pb-12">
                 <h1 class="text-black font-bold text-center text-4xl" >

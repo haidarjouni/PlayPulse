@@ -38,6 +38,25 @@ class User extends Authenticatable
     {
         return $this->is_admin;
     }
+    public function follows($followable)
+    {
+        return Follow::where('user_id', $this->id)
+            ->where('followable_id', $followable->id)
+            ->where('followable_type', get_class($followable));
+    }
+    public function getFollowing()
+    {
+        return Follow::where('user_id', $this->id)->get();  // Retrieves all followings
+    }
+    public function getFollowers()
+    {
+        // Find all Follow records where the current user is the followable entity
+        return Follow::where('followable_id', $this->id)
+            ->get() // Get all follow records for the current user
+            ->map(function($follow) {
+                return $follow->user; // Return the user who is following this user
+            });
+    }
     /**
      * Get the attributes that should be cast.
      *

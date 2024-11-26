@@ -3,6 +3,7 @@
         class="w-[900px] mx-auto border-2 border-black my-6 shadow-xl bg-white p-10 rounded-xl text-black"
         style="font-family: 'ABeeZee', sans-serif;"
         wire:submit.prevent="save">
+        @csrf
         <div class="space-y-12">
             <div class="border-b border-gray-900/10 pb-12">
                 <h1 class="font-bold text-center text-4xl">Enter Character Data</h1>

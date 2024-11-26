@@ -11,7 +11,14 @@ require __DIR__.'/auth.php';
 Route::view('/', 'welcome')->name('home');
 Route::view('/login-page', 'User.login')->name('login-page');
 Route::view('/register-page', 'User.register')->name('register-page');
-Route::get('/profile/{name}/gamelist', [ProfileController::class, 'show'])->name('profile');
+Route::prefix('profile/{name}')->group(function () {
+    Route::get('/', [ProfileController::class, 'show'])->name('profile');
+    Route::get('/game-list', [ProfileController::class, 'gameList'])->name('game-list');
+    Route::get('/dlc-list', [ProfileController::class, 'dlcList'])->name('dlc-list');
+    Route::get('/favorites', [ProfileController::class, 'favorites'])->name('favorites');
+    Route::get('/socials', [ProfileController::class, 'socials'])->name('socials');
+});
+
 
 Route::prefix('game')->group(function () {
     Route::middleware(\App\Http\Middleware\AdminMiddleware::class)->group(function () {
