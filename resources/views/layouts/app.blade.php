@@ -21,6 +21,7 @@
         <!-- pikaday-->
         <script src="https://cdn.jsdelivr.net/npm/pikaday/pikaday.js"></script>
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/pikaday/css/pikaday.css">
+        <script src="{{ asset('js/alpine-modal.js') }}" defer></script>
 
 
         @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -33,7 +34,7 @@
 
         </style>
     </head>
-    <body class="font-sans antialiased min-h-screen body min-h-screen">
+    <body {{ $attributes->merge(['class' => 'font-sans antialiased min-h-screen body']) }} {{ $alpine ?? '' }}> <!-- this is used to pass more attribute for alpine-->
         <main>
             {{ $slot }}
         </main>
