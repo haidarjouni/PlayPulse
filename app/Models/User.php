@@ -58,6 +58,9 @@ class User extends Authenticatable
                 return $follow->user; // Return the user who is following this user
             });
     }
+    public  function getFavoriteType($type){
+        return UserFavorite::where('user_id', $this->id)->where('favoriteable_type',$type)->get();
+    }
     /**
      * Get the attributes that should be cast.
      *

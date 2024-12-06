@@ -4,6 +4,7 @@ namespace App\Livewire;
 
 use App\Models\Game;
 use App\Models\User;
+use App\Models\UserFavorite;
 use App\Models\UserGameList;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
@@ -17,9 +18,30 @@ class ModalForum extends Component
     public $note;
     public $start_date;
     public $finish_date;
-    public $total_replay;
+    public $total_replay = 0;
+    public function refreshFav(){
+        $this->favorite_game = UserFavorite::where('user_id', Auth::id())
+            ->where('favoriteable_id', $this->game->id)
+            ->where('favoriteable_type', Game::class)
+            ->first();
+    }
+    public function toggleFavorite()
+    {
+        if (!Auth::check()) {
+            return response()->json(['message' => 'Unauthorized'], 401);
+        }
+        if ($this->favorite_game) {
+            $this->favorite_game->delete();
+        }else{
+            UserFavorite::create([
+                'user_id' => Auth::id(),
+                'favoriteable_id' => $this->game->id,
+                'favoriteable_type' => Game::class,
+            ]);
+        }
+        $this->refreshFav();
+    }
 
-    // Update method to update the user game list
     public function update()
     {
         $this->user_list->update([
@@ -32,6 +54,7 @@ class ModalForum extends Component
             'start_date' => $this->start_date,
             'finish_date' => $this->finish_date,
         ]);
+
     }
 
     // Create method to create a new user game list entry
@@ -74,17 +97,13 @@ class ModalForum extends Component
         }
         return redirect(request()->header('Referer'));
     }
-    public function favorite(){
-        if (!Auth::check()) {
-            return;
-        }
-
-    }
 
     // Mount method to initialize properties
     public $game;
+
     public $user_list;
-    public function mount($game, $user_list)
+    public $favorite_game;
+    public function mount($game, $user_list, $favorite_game)
     {
         $this->game = $game;
         $this->user_list = $user_list;
@@ -96,6 +115,7 @@ class ModalForum extends Component
             $this->start_date = $user_list->start_date;
             $this->finish_date = $user_list->finish_date;
         }
+        $this->favorite_game = $favorite_game;
     }
 
     public function render()

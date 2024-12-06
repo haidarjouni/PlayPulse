@@ -40,9 +40,9 @@
         }
     </style>
 </head>
-<body class="font-sans antialiased body">
+<body class="font-sans antialiased bg-[#edf1f5]">
 <header>
-    <div class="w-full aspect-[21/4] min-h-[290px] bg-cover background">
+    <div class="w-full aspect-[21/3] min-h-[290px] bg-cover background">
         <div class="w-[1300px] mx-auto flex justify-between items-end h-full">
             <div class="flex gap-10">
                 <image src="{{asset(Storage::url($user->profile_image))}}" class="userBackground object-cover w-[180px] h-[90px] rounded-t-lg"></image>
@@ -71,7 +71,7 @@
         </div>
     </div>
 </header>
-<main>
+<main class="">
     {{$slot}}
 </main>
 @stack('scripts')

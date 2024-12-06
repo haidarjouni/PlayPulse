@@ -1,26 +1,25 @@
 <div x-data="{ open: false }">
-
     <header class="w-full bg-white" style="font-family: 'ABeeZee', sans-serif;">
     <div class="flex flex-row justify-center gap-7 max-w-[1300px] h-fit mx-auto px-10">
         <div class="w-[240px] relative">
             <div class="absolute bottom-7">
                 <div class="flex flex-col">
                     <image class="h-[303px] w-[230px] object-cover rounded-xl shadow-xl" src="{{ asset(Storage::url($game->profile_image)) }}"></image>
-                    <div class="pt-5 gap-3">
+                    <div class="pt-5 gap-3 w-[230px] flex">
                         <button @click="open = !open" type="button"
-                                class="w-[140px] bg-blue-400 p-2 rounded-sm text-white">
+                                class="min-w-[140px] bg-blue-400 p-2 rounded-md text-white flex-1">
                             {{ $user_list ? $user_list->status : 'Add to List' }}
                         </button>
-                        <button type="button" class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">
-                            <i class="fa-solid fa-heart"></i>
+                        <button type="button" wire:click="toggleFavorite" class="bg-red-500 text-white px-4 p-2 w-fit rounded-md ">
+                            <i class="fa-solid fa-heart transition-all {{ $favorite_game ? 'text-red-300' : 'text-white' }}""></i>
                         </button>
                     </div>
                 </div>
             </div>
         </div>
         {{--       card     --}}
-        <div class="bg-black h-svh bg-opacity-40 w-full top-0 flex justify-center items-center fixed z-50  " x-show="open" >
-            <div  class="bg-gray-100 shadow-xl w-[1000px] min-h-[600px]  rounded-md overflow-hidden" @click.outside="open =false">
+        <div class="bg-black h-svh bg-opacity-40 w-full top-0 flex justify-center items-center fixed z-50  " x-cloak x-show="open" >
+            <div  class="bg-gray-100 shadow-xl w-[1000px] min-h-[600px]  rounded-md overflow-hidden"  >
                 <form wire:submit.prevent="submission">
                     <div class="w-full aspect-[21/4.5] background-2 relative">
                         <div class="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-between">
@@ -39,8 +38,8 @@
                                     </div>
                                 </div>
                                 <div class="text-white flex gap-5 items-end mb-[20px]">
-                                    <button type="button"  class="mb-1 cursor-pointer">
-                                        <i class="fa-solid fa-heart"></i>
+                                    <button type="button" wire:click="toggleFavorite" class="mb-1 cursor-pointer">
+                                        <i class="fa-solid fa-heart transition-all {{ $favorite_game ? 'text-red-700' : 'text-white' }}"></i>
                                     </button>
                                     <button class="text-white bg-blue-400 rounded-md text-sm px-3 py-1.5">
                                         Save

@@ -23,7 +23,7 @@
 
     <div class="w-full background h-[400px]">
     </div>
-    @livewire('modal-forum', ['game' => $game, 'user_list' => $user_list])
+    @livewire('modal-forum', ['game' => $game, 'user_list' => $user_list, 'favorite_game'=>$favorite_game])
     <container class="max-w-[1060px] mx-auto mt-5 flex gap-10  h-fit mb-10">
         <sidebar class="bg-white rounded-md h-full p-5 w-[200px]">
             <div class="pb-3">
