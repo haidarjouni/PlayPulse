@@ -18,11 +18,12 @@ return new class extends Migration
 //            $table->boolean('favorite')->default(false);
             $table->enum('status',['plan to play', 'completed' , 'dropped' , 'paused', 'replaying', 'playing'])->default('playing');
             $table->integer('score')->default(0);
-            $table->date('started_date')->nullable();
+            $table->date('start_date')->nullable();
             $table->date('finish_date')->nullable();
             $table->integer('total_replay')->default(0);
-            $table->text('notes')->nullable(); // to write a large notes
+            $table->text('note')->nullable(); // to write a large notes
             $table->timestamps();
+            $table->unique(['user_id', 'game_id']);
         });
     }
 

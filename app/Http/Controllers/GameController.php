@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Game;
+use App\Models\UserGameList;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class GameController extends Controller
 {
@@ -41,7 +43,11 @@ class GameController extends Controller
         if (!$game) {
             abort(404); // If the game is not found, show a 404 page
         }
-        return view('game.show', ['game' => $game]); // Pass $game to a separate view
+
+        // Check if the user has this game in their list
+        $user_list = UserGameList::userHasGame(Auth::id(), $game->id);
+
+        return view('game.show', ['game' => $game, 'user_list' => $user_list]); // Pass $game and $user_list to the view
     }
 
     /**

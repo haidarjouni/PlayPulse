@@ -38,6 +38,7 @@ class User extends Authenticatable
     {
         return $this->is_admin;
     }
+
     public function follows($followable)
     {
         return Follow::where('user_id', $this->id)
