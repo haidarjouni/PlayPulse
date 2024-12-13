@@ -21,7 +21,7 @@
         }
     </style>
 
-    <div class="w-full background h-[400px]">
+    <div class="w-full background h-[320px]">
     </div>
     @livewire('modal-forum', ['game' => $game, 'user_list' => $user_list, 'favorite_game'=>$favorite_game])
     <container class="max-w-[1060px] mx-auto mt-5 flex gap-10  h-fit mb-10">
