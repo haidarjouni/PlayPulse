@@ -36,6 +36,7 @@
         </style>
     </head>
     <body {{ $attributes->merge(['class' => 'font-sans antialiased min-h-screen body']) }} {{ $alpine ?? '' }}> <!-- this is used to pass more attribute for alpine-->
+        <x-header></x-header>
         <main>
             {{ $slot }}
         </main>

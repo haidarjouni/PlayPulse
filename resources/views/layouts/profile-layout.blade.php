@@ -42,6 +42,7 @@
     @livewireStyles
 </head>
 <body class="font-sans antialiased bg-[#edf1f5]">
+<x-header></x-header>
 <header>
     <div class="w-full aspect-[21/3] min-h-[290px] bg-cover background">
         <div class="w-[1300px] mx-auto flex justify-between items-end h-full">
