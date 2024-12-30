@@ -61,6 +61,9 @@ class User extends Authenticatable
     public  function getFavoriteType($type){
         return UserFavorite::where('user_id', $this->id)->where('favoriteable_type',$type)->get();
     }
+    public  function getFavoriteId($id){
+        return UserFavorite::where('user_id', $this->id)->where('id',$id)->first();
+    }
     /**
      * Get the attributes that should be cast.
      *

@@ -26,6 +26,7 @@
 
         @vite(['resources/css/app.css', 'resources/js/app.js'])
         @stack('styles')
+        @livewireStyles
         <style>
             @import url(https://fonts.bunny.net/css?family=abeezee:400|aldrich:400);
         /*    font-family: 'Aldrich', sans-serif;*/
@@ -39,5 +40,7 @@
             {{ $slot }}
         </main>
         @stack('scripts')
+        @livewireScripts
+
     </body>
 </html>

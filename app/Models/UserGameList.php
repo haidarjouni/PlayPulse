@@ -22,11 +22,10 @@ class UserGameList extends Model
             ->where('game_id', $game_id)
             ->first(); // Use first() to get a single result, or get() to fetch a collection
     }
-    public static function userGamesFilter($filter, $user_id)
+    public static function userGamesFilter($user_id, $status)
     {
         return self::where('user_id', $user_id)
-            ->where('status', $filter)
-            ->get(); // Use get() instead of find() for a collection
+            ->where('status', $status);
     }
 
 }

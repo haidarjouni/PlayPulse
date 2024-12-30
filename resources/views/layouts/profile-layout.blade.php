@@ -39,6 +39,7 @@
             background-color: #eaebef;
         }
     </style>
+    @livewireStyles
 </head>
 <body class="font-sans antialiased bg-[#edf1f5]">
 <header>
@@ -75,5 +76,7 @@
     {{$slot}}
 </main>
 @stack('scripts')
+@livewireScripts
+
 </body>
 </html>
