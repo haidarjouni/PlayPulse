@@ -29,6 +29,11 @@ Route::prefix('game')->group(function () {
         Route::get('show/{id}', 'show')->name('game.show');
     });
 });
+Route::prefix('genre')->group(function () {
+    Route::middleware(\App\Http\Middleware\AdminMiddleware::class)->group(function () {
+        Route::view('register', 'genre.register')->name('genre.register');
+    });
+});
 
 Route::prefix('character')->group(function () {
     Route::controller(CharacterController::class)->group(function () {
