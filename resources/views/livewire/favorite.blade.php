@@ -1,4 +1,4 @@
-<div class="max-w-[90rem] mx-auto flex justify-center items-center flex-col">
+<div class="max-w-[90rem] mx-auto flex justify-center items-center flex-col"  x-data="{open:false}">
     <div>
         @foreach([App\Models\Game::class, App\Models\Dlc::class] as $favorite)
         @php
@@ -7,11 +7,11 @@
         @if($favorite_list->count())
             <div>
                 <p class="text-xl font-bold">{{ class_basename($favorite) }} Favorites</p>
-                <div class="bg-white min-w-[1300px] min-h-[400px] flex flex-wrap gap-5 rounded-md p-5" >
+                <div class="bg-white min-w-[1300px] min-h-[400px] flex flex-wrap gap-5 rounded-md p-5" @mouseover="open=true" @mouseleave="open = false" >
                     @foreach($favorite_list as $favorite_item)
                         <div class="relative" x-data="{show: false}"
-                           @mouseover = "open = true; show = true"
-                           @mouseleave="open=false ; show = false"
+                             @mouseover = "show = true"
+                             @mouseleave="show = false"
                         >
                             <button wire:click="deleteFavorite({{$favorite_item->favoriteable->id,$favorite}})" class="absolute rounded-md bg-red-400 text-white -right-2 -top-2  px-2 z-50 " x-show="show"  x-cloak x-transition>
                                 x

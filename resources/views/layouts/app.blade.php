@@ -22,8 +22,11 @@
         <script src="https://cdn.jsdelivr.net/npm/pikaday/pikaday.js"></script>
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/pikaday/css/pikaday.css">
         <script src="{{ asset('js/alpine-modal.js') }}" defer></script>
-
-
+{{--        tom select--}}
+        <script src="tom-select.complete.js"></script>
+        <link href="tom-select.bootstrap4.css" rel="stylesheet" />
+{{--        jqeury--}}
+        <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
         @vite(['resources/css/app.css', 'resources/js/app.js'])
         @stack('styles')
         @livewireStyles
