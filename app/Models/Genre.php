@@ -8,4 +8,7 @@ class Genre extends Model
 {
     protected $table = 'genres';
     protected $fillable = ['name', 'slug'];
+    public function games(){
+        return $this->belongsToMany(Game::class, 'game_genre', 'genre_id', 'game_id');
+    }
 }

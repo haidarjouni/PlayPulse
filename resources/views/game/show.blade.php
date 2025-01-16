@@ -91,7 +91,6 @@
                             </div>
                             <!-- Voice Actor Info -->
                             <div class="flex flex-row-reverse flex-1">
-
                                 <a href="{{ route('voice-actor.show',$character->voiceActors->first()->id) }}">
                                     <img class="w-[60px] h-[80px] object-fill" src="{{ Storage::url($character->voiceActors->first()->profile_image) }}" alt="{{ $character->voiceActors->first()->name }}">
                                 </a>

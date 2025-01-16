@@ -26,10 +26,6 @@ class GameController extends Controller
     {
         //
     }
-    public function createGenre()
-    {
-        return view('game.genre.add');
-    }
     /**
      * Store a newly created resource in storage.
      */

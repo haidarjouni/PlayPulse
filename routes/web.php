@@ -32,6 +32,7 @@ Route::prefix('game')->group(function () {
 Route::prefix('genre')->group(function () {
     Route::middleware(\App\Http\Middleware\AdminMiddleware::class)->group(function () {
         Route::view('register', 'genre.register')->name('genre.register');
+        Route::view('add', 'genre.add')->name('add.game.genre');
     });
 });
 

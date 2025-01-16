@@ -32,4 +32,7 @@ class Game extends Model
     public function getGender(){
         return $this->gender ? 'male' : 'female';
     }
+    public function genres(){
+        return $this->belongsToMany(Genre::class, 'game_genres', 'game_id', 'genre_id');
+    }
 }

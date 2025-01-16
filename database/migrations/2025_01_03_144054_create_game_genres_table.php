@@ -13,7 +13,11 @@ return new class extends Migration
     {
         Schema::create('game_genres', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('game_id')->constrained('games');
+            $table->foreignId('genre_id')->constrained('genres');
+            $table->string('slug');
             $table->timestamps();
+            $table->unique(['game_id', 'genre_id']);
         });
     }
 
