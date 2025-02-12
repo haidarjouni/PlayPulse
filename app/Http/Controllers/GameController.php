@@ -40,6 +40,8 @@ class GameController extends Controller
     public function show(int $id)
     {
         $game = Game::find($id); // Fetch specific game
+        $sequels = $game->sequels;
+        $prequels = $game->prequels;
         if (!$game) {
             abort(404); // If the game is not found, show a 404 page
         }
@@ -51,7 +53,7 @@ class GameController extends Controller
             ->where('favoriteable_type', get_class($game)) // Dynamically determine the class of $game
             ->where('user_id', Auth::id())
             ->first();
-        return view('game.show', ['game' => $game, 'user_list' => $user_list, 'favorite_game' => $favorite_game]); // Pass $game and $user_list to the view
+        return view('game.show', ['game' => $game, 'user_list' => $user_list, 'favorite_game' => $favorite_game, 'sequels' => $sequels, 'prequels'=> $prequels]); // Pass $game and $user_list to the view
     }
 
     /**

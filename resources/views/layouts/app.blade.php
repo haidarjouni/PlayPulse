@@ -31,16 +31,12 @@
         @stack('styles')
         @livewireStyles
         <style>
-            @import url(https://fonts.bunny.net/css?family=abeezee:400|aldrich:400);
-        /*    font-family: 'Aldrich', sans-serif;*/
-        /*    font-family: 'ABeeZee', sans-serif;*/
             [x-cloak] { display: none !important; }
-
         </style>
     </head>
-    <body {{ $attributes->merge(['class' => 'font-sans antialiased min-h-screen body']) }} {{ $alpine ?? '' }}> <!-- this is used to pass more attribute for alpine-->
+    <body {{ $attributes->merge(['class' => 'font-sans antialiased min-h-screen body bg-[#edf1f5]']) }}  {{ $alpine ?? '' }}> <!-- this is used to pass more attribute for alpine-->
         <x-header></x-header>
-        <main>
+        <main class="">
             {{ $slot }}
         </main>
         @stack('scripts')

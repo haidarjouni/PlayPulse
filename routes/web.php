@@ -23,6 +23,7 @@ Route::prefix('profile/{name}')->group(function () {
 Route::prefix('game')->group(function () {
     Route::middleware(\App\Http\Middleware\AdminMiddleware::class)->group(function () {
         Route::view('register', 'game.register')->name('game.register');
+        Route::view('sequels_prequels','game.sequels_prequels')->name('game.sequels_prequels');
     });
     Route::controller(GameController::class)->group(function () {
         Route::get('index', 'index')->name('game.index');

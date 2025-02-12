@@ -35,4 +35,16 @@ class Game extends Model
     public function genres(){
         return $this->belongsToMany(Genre::class, 'game_genres', 'game_id', 'genre_id');
     }
+
+    public function sequels()
+    {
+        return $this->belongsToMany(Game::class, 'sequels_prequels', 'game_id_prequel', 'game_id_sequel')->withTimestamps();
+    }
+
+    public function prequels()
+    {
+        return $this->belongsToMany(Game::class, 'sequels_prequels', 'game_id_sequel', 'game_id_prequel')->withTimestamps();
+    }
+
+
 }

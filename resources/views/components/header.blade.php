@@ -1,4 +1,4 @@
-    <div class="top-0 absolute w-full shadow-xl text-white z-10 bg-gray-900 bg-opacity-70 hover:bg-opacity-100 transition-all ease-in-out duration-500">
+    <div class="top-0 absolute w-full  text-white z-10 bg-[#2a2d41] {{ Route::currentRouteName() == "home" ? 'bg-opacity-100' : 'bg-opacity-70 hover:bg-opacity-100 shadow-xl' }} transition-all ease-in-out duration-500">
         <nav class="flex items-center justify-between p-2 lg:px-8" aria-label="Global">
             <div class="flex lg:flex-1">
                 <a href="{{ route('home') }}" class="-m-1.5 p-1.5">
@@ -21,13 +21,20 @@
                 @auth
                     <a href="{{route("profile", ['name' => Auth::user()->name] )}}" class="text-sm/6 font-semibold text-white">Profile</a>
                     @if(Auth::user()->isAdmin())
-                        <a href="{{ route('game.register') }}" class="text-sm/6 font-semibold text-white">Enter Games</a>
+                        <div class="inline-block relative" x-data="{open:false}" @mouseover="open = true" @mouseleave="open = false">
+                            <p class="text-sm/6 font-semibold text-white hover:cursor-pointer">
+                                Admin Pages
+                            </p>
+                            <div class="absolute " x-show="open">
+                                <a href="{{ route('game.register') }}" class="text-sm/6 font-semibold text-white">Enter Games</a>
 
-                        <a href="{{ route('character.register') }}" class="text-sm/6 font-semibold text-white">Enter Character</a>
+                                <a href="{{ route('character.register') }}" class="text-sm/6 font-semibold text-white">Enter Character</a>
 
-                        <a href="{{ route('voice-actor.register') }}" class="text-sm/6 font-semibold text-white">Enter Voice Actor</a>
+                                <a href="{{ route('voice-actor.register') }}" class="text-sm/6 font-semibold text-white">Enter Voice Actor</a>
 
-                        <a href="{{ route('relation.register') }}" class="text-sm/6 font-semibold text-white">Dunno wat to call this</a>
+                                <a href="{{ route('relation.register') }}" class="text-sm/6 font-semibold text-white">Dunno wat to call this</a>
+                            </div>
+                        </div>
                     @endif
 
                 @endauth

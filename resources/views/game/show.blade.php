@@ -66,8 +66,49 @@
                     {{ $game->release_date }}
                 </p>
             </div>
+            <div class="pb-3">
+                <p class="text-sm text-[#667a91] font-semibold">
+                    Genre
+                </p>
+                <p class="text-sm text-[#949ba3]">
+                    @foreach($game->genres as $genre)
+                        {{ $genre->name }}
+                    @endforeach
+                </p>
+            </div>
         </sidebar>
         <content>
+            <div class="mb-10">
+                <div class="font-bold text-md mb-3">
+                    <p class="text-md">Relation</p>
+                    <div class="mt-3 flex gap-5">
+                        @foreach($sequels as $sequel)
+                            <div class="relative overflow-hidden w-fit">
+                                <a href="{{ route('game.show', [$sequel->id]) }}">
+                                    <image class="w-[85px] h-[115px] rounded-lg object-cover z-50" src="{{ Storage::url($sequel->profile_image )}}"></image>
+                                    <div class="absolute bottom-0 z-0 w-full bg-black h-6 rounded-b-lg bg-opacity-50">
+                                        <p class="text-white text-center text-sm font-light">Sequel</p>
+                                    </div>
+                                </a>
+                            </div>
+                        @endforeach
+                        @foreach($prequels as $prequel)
+                            <div class="relative overflow-hidden w-fit">
+                                <a href="{{ route('game.show', [$prequel->id]) }}">
+                                    <image class="w-[85px] h-[115px] rounded-lg object-cover z-50" src="{{ Storage::url($prequel->profile_image )}}"></image>
+                                    <div class="absolute bottom-0 z-0 w-full bg-black h-6 rounded-b-lg bg-opacity-50">
+                                        <p class="text-white text-center text-sm font-light">Prequel</p>
+                                    </div>
+                                </a>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+                <div class="flex gap-10">
+                    @foreach($game->characters as $character)
+                    @endforeach
+                </div>
+            </div>
             <div class="mb-10">
                 <div class="font-bold text-md mb-3">
                     <p class="text-md">Characters</p>
