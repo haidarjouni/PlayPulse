@@ -66,7 +66,6 @@
             <div class="w-full flex flex-row justify-evenly font-bold text-[#6d8096]">
                 <a href="{{ route('profile', ['name' => $user->name]) }}" class="p-[9px] hover:cursor-pointer {{ Route::currentRouteName() == 'profile' ? 'text-orange-500' : 'text-gray-700' }} ">Overview</a>
                 <a href="{{ route('game-list', ['name' => $user->name]) }}" class="p-[9px] hover:cursor-pointer {{ Route::currentRouteName() == 'game-list' ? 'text-orange-500' : 'text-gray-700' }}">Game List</a>
-                <a href="{{ route('dlc-list', ['name' => $user->name]) }}" class="p-[9px] hover:cursor-pointer {{ Route::currentRouteName() == 'dlc-list' ? 'text-orange-500' : 'text-gray-700' }}">DLC List</a>
                 <a href="{{ route('favorites', ['name' => $user->name]) }}" class="p-[9px] hover:cursor-pointer {{ Route::currentRouteName() == 'favorites' ? 'text-orange-500' : 'text-gray-700' }}">Favorites</a>
                 <a href="{{ route('socials', ['name' => $user->name]) }}" class="p-[9px] hover:cursor-pointer {{ Route::currentRouteName() == 'socials' ? 'text-orange-500' : 'text-gray-700' }}">Friends</a>
             </div>

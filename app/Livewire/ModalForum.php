@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use App\Models\Activity;
 use App\Models\Game;
 use App\Models\User;
 use App\Models\UserFavorite;
@@ -42,6 +43,14 @@ class ModalForum extends Component
         $this->refreshFav();
     }
 
+    public function upadateActivity(){
+        Activity::create([
+            'user_id' => Auth::id(),
+            'game_id' => $this->game->id,
+            'activity' => $this->status,
+        ]);
+    }
+
     public function update()
     {
         $this->user_list->update([
@@ -54,9 +63,7 @@ class ModalForum extends Component
             'start_date' => $this->start_date,
             'finish_date' => $this->finish_date,
         ]);
-
     }
-
     // Create method to create a new user game list entry
     public function create()
     {
@@ -91,9 +98,11 @@ class ModalForum extends Component
         if ($this->user_list) {
             // Call the update method if the user already has a list
             $this->update();
+            $this->upadateActivity();
         } else {
             // Call the create method if no list exists for the user
             $this->create();
+            $this->upadateActivity();
         }
         return redirect(request()->header('Referer'));
     }

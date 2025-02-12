@@ -58,6 +58,9 @@ class User extends Authenticatable
                 return $follow->user; // Return the user who is following this user
             });
     }
+    public function getFollowingId(){
+        return Follow::where('user_id', $this->id)->pluck('followable_id')->toArray(); // Return an array of user IDs
+    }
     public  function getFavoriteType($type){
         return UserFavorite::where('user_id', $this->id)->where('favoriteable_type',$type)->get();
     }

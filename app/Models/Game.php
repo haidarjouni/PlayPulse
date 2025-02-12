@@ -8,7 +8,6 @@ class Game extends Model
 {
     protected $table = 'games';
     protected $fillable = ['name', 'profile_image', 'description', 'format', 'duration', 'status', 'dev_date', 'release_date'];
-
     // Relationship to Characters
     public function characters()
     {

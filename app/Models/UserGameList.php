@@ -18,7 +18,7 @@ class UserGameList extends Model
     }
     public static  function userHasGame($user_id, $game_id)
     {
-        return UserGameList::where('user_id', $user_id)
+        return self::where('user_id', $user_id)
             ->where('game_id', $game_id)
             ->first(); // Use first() to get a single result, or get() to fetch a collection
     }

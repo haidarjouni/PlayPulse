@@ -1,8 +1,10 @@
 <?php
 use App\Http\Controllers\CharacterController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\GameController;
 use App\Http\Controllers\VoiceActorController;
+use App\Livewire\ActivityPage;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
