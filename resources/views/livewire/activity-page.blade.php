@@ -51,7 +51,7 @@
                                     {{ $activity->user->name }}
                                 </p>
                                 <div class="flex gap-2 items-center" >
-                                    @if(auth()->user()->id == $activity->user->id)
+                                    @if(auth()->check() && (auth()->user()->id == $activity->user->id))
                                         <button wire:click="deleteActivity({{ $activity->id }})">
                                             <i class="fa-solid fa-ellipsis" x-cloak x-show="open" x-transition></i>
                                         </button>

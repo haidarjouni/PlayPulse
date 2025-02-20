@@ -10,22 +10,24 @@ use Livewire\Component;
 
 class ActivityPage extends Component
 {
+    private $user;
     public $type = 'G' ;
     public $activities;
     public $games;
     public $playing_games;
     public function mount()
     {
-        $this->type = auth()->check() ? 'F' : 'G'; // 'F' for friends, 'G' for global
-
-        $this->loadActivities();
+        $this->user = auth()->user();
+        $this->type= $this->user ? 'F' : 'G';
         $this->games = Game::orderBy('created_at', 'desc')->limit(5)->get();
+        $this->loadActivities();
+        $this->loadGames();
+    }
+    public function loadGames(){
         $this->playing_games = auth()->check()
             ? UserGameList::userGamesFilter(auth()->id(), 'playing')->get()
             : collect();
     }
-
-
     public function updatedType()
     {
         $this->loadActivities();
@@ -43,11 +45,15 @@ class ActivityPage extends Component
             ['user_id' => auth()->id(), 'game_id' => $g_id],
             ['status' => $status]
         );
-        $this->mount();
+        $this->loadActivities();
+        $this->loadGames();
     }
     public function deleteActivity($activity_id){
-        Activity::destroy($activity_id);
-        return redirect()->route('home');
+        $activity = Activity::find($activity_id);
+        if($activity){
+            $activity->delete();
+        }
+        return redirect()->route("home");
     }
     public function loadActivities()
     {

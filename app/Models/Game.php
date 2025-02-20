@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Game extends Model
 {
     protected $table = 'games';
-    protected $fillable = ['name', 'profile_image', 'description', 'format', 'duration', 'status', 'dev_date', 'release_date'];
+    protected $fillable = ['title','name', 'profile_image', 'description', 'format', 'duration', 'status', 'dev_date', 'release_date','created_at','updated_at'];
     // Relationship to Characters
     public function characters()
     {

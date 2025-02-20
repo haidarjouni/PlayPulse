@@ -1,16 +1,23 @@
 <?php
 use App\Http\Controllers\CharacterController;
+use App\Http\Controllers\GoogleAuthController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\GameController;
 use App\Http\Controllers\VoiceActorController;
 use App\Livewire\ActivityPage;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use Laravel\Socialite\Facades\Socialite;
 
 require __DIR__.'/auth.php';
 
 Route::view('/', 'welcome')->name('home');
+
+Route::get('/auth/google/redirect', [GoogleAuthController::class, 'redirect'])->name('auth.google');
+Route::get('/auth/google/callback', [GoogleAuthController::class, 'callback']);
+
 Route::view('/login-page', 'User.login')->name('login-page');
 Route::view('/register-page', 'User.register')->name('register-page');
 Route::prefix('profile/{name}')->group(function () {
